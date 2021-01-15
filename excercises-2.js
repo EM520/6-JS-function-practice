@@ -4,16 +4,18 @@
 // if-then-else construct available in JavaScript.
 // ---------------------
 
-(function max(a,b){
+function max(a,b) {
     
-if (a>b){
+    if (a>b){       
 
-    return a
-}else{
-    return b
+        return a
+
+    }else{
+
+        return b
 }
 
-})
+}
 console.assert(max(2,3) === 3)
 console.assert(max(23,24) === 24)
 console.assert(max(-23, 12) === 12)
@@ -23,7 +25,7 @@ console.assert(max(-23, 12) === 12)
 // numbers as arguments and returns the largest of them.
 // ---------------------
 
-(function maxOfThree(a,b,c){
+function maxOfThree(a,b,c){
     if(a>b && a>c){
         return a;
         }else if(b>a && b>c){
@@ -32,7 +34,7 @@ console.assert(max(-23, 12) === 12)
         return c;
         }
 
-})
+}
 
 console.assert(maxOfThree(2,56,3) === 56)
 console.assert(maxOfThree(12,3,4) === 12)
@@ -44,26 +46,26 @@ console.assert(maxOfThree(-12,4,-5) === 4)
 // vowel, false otherwise.
 // ---------------------
 
-(function isVowel(character){
+function isVowel(character){
     
-    var vowel='aeiou'
+    var vowel='aeiouAEIOU'
     
 
     for (var i = 0 ; i < vowel.length; i++) {
 
         
-    if(character == vowel[i])  {
+    if(character === vowel[i])  {
 
     return true
 
     }
-
-    else {
-
-        return false
+    
     }
+    return false
+     
     }
-})
+
+ 
 
 console.assert(isVowel(0) === false);
 console.assert(isVowel("B") === false);
@@ -79,32 +81,52 @@ console.assert(isVowel("2") === false)
 // For example, translate("this is fun") should return 
 // the string "tothohisos isos fofunon".
 // ---------------------
-(function checkConsonants(letterToCheck) {
-    var consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'];
-    var isConsonant = false;
+// function checkConsonants(letterToCheck) {
+//     var consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'];
+//     var isConsonant = false;
 
-    for (var i = 0; i < consonants.length; i++) {
-        if (letterToCheck == consonants[i]) {
-            isConsonant = true;
-        }
-    }
-    return isConsonant;
-})
+//     for (var i = 0; i < consonants.length; i++) {
+//         if (letterToCheck == consonants[i]) {
+//             isConsonant = true;
+//         }
+//     }
+//     return isConsonant;
+// }
 
 
-(function rovarspraket(str) {
+// function rovarspraket(str) {
 
-    var newStr = '';
+//     var newStr = '';
 
-    for (var i = 0; i < str.length; i++) {
-        if (checkConsonants(str[i])) {
-            newStr += str[i] + "o" + str[i];
-        } else {
-            newStr += str[i];
-        }
-    }
+//     for (var i = 0; i < str.length; i++) {
+//         if (checkConsonants(str[i])) {
+//             newStr += str[i] + "o" + str[i];
+//         } else {
+//             newStr += str[i];
+//         }
+//     }
+//     return newStr
+// }
+
+function rovarspraket(str) {
+
+if (typeof str === "number") {
+    return str.toString()
+}
+
+ var newStr=''
+ for (var i = 0 ; i < str.length ; i++) {
+     var currentLetter = str [i]
+     var isVowel = "aeiou".includes(currentLetter)
+     if (isVowel) {
+         newStr += currentLetter
+     }else {
+         newStr = newStr + currentLetter + "o" + currentLetter
+     }
+
+ }
     return newStr
-})
+}
 console.assert(rovarspraket("a") === "a")
 console.assert(rovarspraket("b") === "bob")
 console.assert(rovarspraket("cat") === "cocatot")
@@ -118,18 +140,25 @@ console.assert(rovarspraket(0) === "0")
 // return the string "ratset gaj".
 // ---------------------
 
- ( function reverse(str) {
+//  function reverse(str) {
     
-    var reversedStr = []
+//     var reversedStr = []
 
-    for (var i = str.length-1; i>=0 ; i--) {
+//     for (var i = str.length-1; i>=0 ; i--) {
 
-        reversedStr.push(str[i])
+//         reversersedStr = reversedStr.push(str[i])
+//     }
+//     return reversedStr.join(" ")
+//     }
+
+function reverse(str) {
+    var reversedStr=""
+    for (var i = str.length-1; i >= 0 ; i--) {
+        reversedStr = reversedStr + str[i]
+        
     }
-    return reversedStr.join(" ")
-    }
-)
-
+    return reversedStr
+}
 
 console.assert(reverse("books") === "skoob")
 console.assert(reverse("we don't want no trouble") === "elbuort on tnaw t'nod ew")
